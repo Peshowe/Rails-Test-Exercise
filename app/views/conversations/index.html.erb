@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<p> Currently logged in as: <%= session[:user_type] %> <%= session[:user_email] %>  <%= link_to 'Sign out', login_path %> </p>
+<h1>Conversations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>User</th>
+      <th>Trainer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @conversations.each do |conversation| %>
+      <tr class ="<%= cycle('list_line_odd', 'list_line_even') %>">
+	  <% if (session[:user_type] == "User") %>
+	  <% @email = conversation.user.email %>
+	  <% elsif (session[:user_type] == "Trainer") %>
+	  <% @email = conversation.trainer.email %>
+	  <% end %>
+	  <% if(@email == session[:user_email]) %>
+        <td><%= conversation.topic %></td>
+        <td><%= conversation.user.email %></td>
+        <td><%= conversation.trainer.email %></td>
+        <td><%= link_to 'Show', conversation %></td>
+      </tr>
+	  <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Conversation', new_conversation_path %>
+<%= link_to 'Sign out', login_path %>

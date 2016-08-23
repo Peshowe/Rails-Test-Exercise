@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+development:
+   adapter: postgresql
+   encoding: unicode
+   database: exercise_development
+   username: exercise_user
+   password: 123
+
+test:
+   adapter: postgresql
+   encoding: unicode
+   database: exercise_test
+   username: exercise_user
+   password: 123
+   
+production:
+   adapter: postgresql
+   encoding: unicode
+   database: exercise_production
+   username: exercise_user
+   password: 123

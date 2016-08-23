@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender: MyString
+  content: MyText
+  conversation: one
+  sentOn: 2016-08-22 19:46:44
+
+two:
+  sender: MyString
+  content: MyText
+  conversation: two
+  sentOn: 2016-08-22 19:46:44

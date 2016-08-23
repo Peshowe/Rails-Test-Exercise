@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<p> Currently logged in as: <%= session[:user_type] %> <%= session[:user_email] %>  <%= link_to 'Sign out', login_path %> </p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @conversation.topic %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @conversation.user.email %>
+</p>
+
+<p>
+  <strong>Trainer:</strong>
+  <%= @conversation.trainer.email %>
+</p>
+
+
+<h2> Messages </h2>
+
+<% @conversation.messages.each do |message| %>
+<p>
+	<strong>Sender: </strong>
+	<%= message.sender %>
+</p>
+<p>
+	<strong>Message: </strong>
+	<%= message.content %>
+</p>
+<p>
+	<strong>Sent: </strong>
+	<%= message.created_at %>
+</p>
+
+<p>-----------------------------------------------------------------------------</p>
+<% end %>
+
+<h2> New Message </h2>
+<%= form_for([@conversation, @conversation.messages.build]) do |f| %>
+<p>
+	<%= f.label :content %><br />
+	<%= f.text_area :content %>	
+</p>
+<p>
+	<%= f.submit %>
+</p>
+<% end %>
+
+
+<%= link_to 'Back', conversations_path %>
+<%= link_to 'Sign out', login_path %>

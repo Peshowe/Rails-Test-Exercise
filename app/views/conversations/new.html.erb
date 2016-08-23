@@ -1,0 +1,8 @@
+<p> Currently logged in as: <%= session[:user_type] %> <%= session[:user_email] %>  <%= link_to 'Sign out', login_path %> </p>
+
+<h1>New Conversation</h1>
+<% @session = session %>
+
+<%= render 'form', conversation: @conversation, session: @session %>
+
+<%= link_to 'Back', conversations_path %>
